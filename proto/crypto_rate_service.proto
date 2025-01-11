@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package proto;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = ".;proto";
+
+
+message Ask{
+  string price = 1;
+  string volume = 2;
+  string amount = 3;
+  string factor = 4;
+  string type = 5;
+}
+
+message Bid{
+  string price = 1;
+  string volume = 2;
+  string amount = 3;
+  string factor = 4;
+  string type = 5;
+}
+
+message RatesResponse{
+  google.protobuf.Timestamp timestamp = 1;
+  Ask ask = 2;
+  Bid bid = 3;
+}
+
+
+service RatesService {
+  rpc GetRates(google.protobuf.Empty) returns (RatesResponse);
+}
+
+
