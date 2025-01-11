@@ -1,0 +1,14 @@
+linters:
+  enable-all: true
+  disable:
+    - gochecknoglobals
+
+run:
+  tests: true
+  skip-dirs:
+    - bin
+
+output:
+  format: colored-line-number
+  print-issued-lines: true
+  print-linter-name: true

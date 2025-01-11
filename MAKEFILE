@@ -1,0 +1,23 @@
+APP_NAME=myapp
+DOCKER_IMAGE=myapp:latest
+
+build:
+	go build -o $(APP_NAME) ./cmd/app
+
+test:
+	go test -v ./...
+
+docker-build:
+	docker build -t $(DOCKER_IMAGE) .
+
+run:
+	./$(APP_NAME)
+
+lint:
+	golangci-lint run --config=.golangci.yml ./...
+
+deps:
+	go mod tidy
+
+.PHONY: build test docker-build run lint deps
+
